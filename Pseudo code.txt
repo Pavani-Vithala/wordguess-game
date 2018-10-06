@@ -1,0 +1,31 @@
+1. Create HTMl with the below elements
+
+a. Header as "Vegetable Guess"
+
+b. an End button which when clicked clears the screen and just displays Good Bye
+
+b. 2 divs one for showing the veg picture guessed
+
+c. Second div for the game with below elements
+
+a. "Please press a key to continue" <br>
+
+"wins"<br>
+
+"current word"
+
+
+
+b. random pick form an array of veggies with just the blanks
+
+c. "no, of guesses remaining" - equal to (no,of alphabets+3) and decrements with every guess. Should not decrement if the key press is a already guessed letter
+
+d. "Letters already Guessed" - Prints all the letters guessed except repetetions and the matches
+
+e if the right letter is guessed which matches with a letter in the random word, it should be displayed in the right positionin the blanks.
+
+f. Once the guesses remaining is zero and if all the letters of the vegitable are not guessed, print You lose.
+
+g. if the letters of the vegetable are guessed before the no, of guesses is zero, you increment the no, of wins and display a picture of the vegetable guessed in the left div and display another set of blanks in the current word section.
+
+and the game goes on till the user hits End button
