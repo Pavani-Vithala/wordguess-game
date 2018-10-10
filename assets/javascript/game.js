@@ -4,13 +4,12 @@
 window.onload = function () {
     var veggieList = ["carrots", "beans", "peas", "potato", "spinach", "tomatoes"];
     var CurrentWord = veggieList[Math.floor(Math.random() * veggieList.length)];
-    var GuessesLeft=10;
+    var GuessCounter=10;
     var wins = document.getElementById("WinCount");
     //var ChosenWord = document.getElementById("WordChoice");
     //var GuessCounter = document.getElementById("GuessesLeft");
-    //GuessCounter = GuessesLeft;
-   // var GuessedSofar = document.getElementById("LettersGuessed");
-    document.getElementById("GuessesLeft").innerHTML = GuessesLeft;
+    //var GuessedSofar = document.getElementById("LettersGuessed");
+    document.getElementById("GuessesLeft").innerHTML = GuessCounter;
     document.getElementById("WinCount").innerHTML = 0;
     console.log("CurrentVeggie is " + CurrentWord);
     console.log("length of veggie is  " + CurrentWord.length);
@@ -19,7 +18,7 @@ window.onload = function () {
     var WordChoice = [];
     var LetterGuessed = [];
     
-    var Space = [""]
+    
     for (var i = 0; i < CurrentWord.length; i++) {
         
            
@@ -36,9 +35,10 @@ window.onload = function () {
         // Determines which key was pressed.
         var userGuess = event.key;
         console.log(userGuess);
-
+        
+        GuessesLeft=GuessCounter;
         for (var j = 0; j < CurrentWord.length; j++) {
-            if (userGuess === CurrentWord[j]) {
+            if (userGuess == CurrentWord[j]) {
                 WordChoice[j] = userGuess;
                 document.getElementById("WordChoice").innerHTML = WordChoice;
                 //WordChoice[j] = CurrentWord[j];
@@ -50,9 +50,12 @@ window.onload = function () {
                 document.getElementById("GuessesLeft").innerHTML=GuessesLeft;
             }
 
-            GuessesLeft=Guessesleft-1;
-
+           
         }
+
+        GuessCounter=GuessCounter-1;
+        console.log("The Guess Counter is "+GuessCounter);
+        
 
     };
 
