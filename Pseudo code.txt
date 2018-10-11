@@ -29,3 +29,10 @@ f. Once the guesses remaining is zero and if all the letters of the vegitable ar
 g. if the letters of the vegetable are guessed before the no, of guesses is zero, you increment the no, of wins and display a picture of the vegetable guessed in the left div and display another set of blanks in the current word section.
 
 and the game goes on till the user hits End button
+
+
+Pending
+
+1. To persist the win count during page loads
+2. To display the image of the vegetable guessed
+3. To check on the AllGuess array
