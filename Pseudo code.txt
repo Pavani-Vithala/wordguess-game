@@ -36,3 +36,4 @@ Pending
 1. To persist the win count during page loads
 2. To display the image of the vegetable guessed
 3. To check on the AllGuess array
+4. To add the link to basic profile bootstrap.
