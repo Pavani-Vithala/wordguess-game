@@ -1,21 +1,22 @@
 
 
 // This function is run onload of the page
-
-window.onload = function () {
-    var wins = 0;
+var wins = 0;
     var WordChoice = [];
     var LetterGuessed = [];
     var GuessCounter = 10;
+window.onload = function () {
+    
     document.getElementById("WinCount").innerHTML = wins;
     document.getElementById("GuessesLeft").innerHTML = GuessCounter;
     CurrentWord = Refresh();
 
     document.onkeyup = function (event) {
         // Determines which key was pressed.
+        console.log("Guess Counter in key lookup is "+GuessCounter);
         var userGuess = event.key;
-             GuessCounter = parseInt(GuessCounter) - 1;
-       document.getElementById("GuessesLeft").innerHTML = parseInt(GuessCounter);
+             GuessCounter = GuessCounter - 1;
+       document.getElementById("GuessesLeft").innerHTML = GuessCounter;
         var t = 0;
         console.log("Entered Keypress function and current word is :" + CurrentWord);
         for (var j = 0; j < CurrentWord.length; j++) {
@@ -68,7 +69,7 @@ window.onload = function () {
                 wins = wins + 1;
                 //sessionStorage.setItem("wins", parseInt(wins));
                 document.getElementById("WinCount").innerHTML = wins;
-                var GuessCounter = 10;
+                GuessCounter = 10;
                 CurrentWord = Refresh();
 
             }
@@ -83,7 +84,7 @@ window.onload = function () {
                 window.close();
             }
             else {
-                var GuessCounter = 10;
+                GuessCounter = 10;
                 CurrentWord = Refresh();
             }
         }
@@ -93,7 +94,7 @@ window.onload = function () {
         console.log("Entered Refresh function:");
         var veggieList = ["carrots", "beans", "peas", "potato", "spinach", "tomatoes"];
         var CurrentWord = veggieList[Math.floor(Math.random() * veggieList.length)];
-        var GuessCounter = 10;
+        GuessCounter = 10;
         console.log("The counter in Refresh functrion is " + GuessCounter);
         LetterGuessed = [];
         WordChoice = [];
