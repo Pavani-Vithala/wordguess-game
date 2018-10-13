@@ -14,14 +14,8 @@ window.onload = function () {
     document.onkeyup = function (event) {
         // Determines which key was pressed.
         var userGuess = event.key;
-        if (GuessCounter == null) {
-            GuessCounter = 10;
-            GuessCounter = GuessCounter - 1;
-        }
-        else
-            GuessCounter = GuessCounter - 1;
-
-        document.getElementById("GuessesLeft").innerHTML = GuessCounter;
+             GuessCounter = parseInt(GuessCounter) - 1;
+       document.getElementById("GuessesLeft").innerHTML = parseInt(GuessCounter);
         var t = 0;
         console.log("Entered Keypress function and current word is :" + CurrentWord);
         for (var j = 0; j < CurrentWord.length; j++) {
