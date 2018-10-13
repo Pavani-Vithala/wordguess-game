@@ -1,115 +1,118 @@
-
-
-// This function is run onload of the page
+//Declaration of Global Variables
 var wins = 0;
-    var WordChoice = [];
-    var LetterGuessed = [];
-    var GuessCounter = 10;
+var wordChoice = [];
+var letterGuessed = [];
+var guessCounter = 10;
+// This function is run onload of the page
 window.onload = function () {
-    
-    document.getElementById("WinCount").innerHTML = wins;
-    document.getElementById("GuessesLeft").innerHTML = GuessCounter;
-    CurrentWord = Refresh();
 
+    document.getElementById("WinCount").innerHTML = wins;
+    document.getElementById("GuessesLeft").innerHTML = guessCounter;
+    currentWord = Refresh();
+    //Function executes when ever a key is pressed
     document.onkeyup = function (event) {
         // Determines which key was pressed.
-        console.log("Guess Counter in key lookup is "+GuessCounter);
         var userGuess = event.key;
-             GuessCounter = GuessCounter - 1;
-       document.getElementById("GuessesLeft").innerHTML = GuessCounter;
+        console.log("user choice is " + userGuess);
+        guessCounter = guessCounter - 1;
+        document.getElementById("GuessesLeft").innerHTML = guessCounter;
         var t = 0;
-        console.log("Entered Keypress function and current word is :" + CurrentWord);
-        for (var j = 0; j < CurrentWord.length; j++) {
-            if (userGuess === CurrentWord[j]) {
-                WordChoice[j] = userGuess;
-                document.getElementById("WordChoice").innerHTML = WordChoice;
-                console.log("The word Choice is :" + WordChoice);
+
+        for (var j = 0; j < currentWord.length; j++) {
+            if (currentWord[j] === userGuess) {
+                wordChoice[j] = userGuess;
+                document.getElementById("WordChoice").innerHTML = wordChoice;
                 t = 1;
             }
         }
+            if (t === 0) {
+                var dup = 0;
 
-        if (t != 1) {
-            LetterGuessed.push(userGuess);
-            document.getElementById("LettersGuessed").innerHTML = LetterGuessed;
-            console.log("The Letters Guessed is :" + LetterGuessed);
-        }
-        console.log("The guesscntr is" + GuessCounter);
-        //GuessCounter = GuessCounter - 1;
-        document.getElementById("GuessesLeft").innerHTML = GuessCounter;
+                for (var x = 0; x < letterGuessed.length; x++) {
+                    if (letterGuessed[x] === userGuess) {
+                        dup = dup + 1;
 
-        console.log("Guess Counter is  " + GuessCounter);
-        console.log("Word Choice is " + WordChoice);
-        console.log("CurrentWord is " + CurrentWord);
-        //var check = 0;
-        //var img = document.getElementById("veggiepic").innerHTML;
-        var check1 = 0;
-        var check2 = 0;
-        for (var i = 0; i < WordChoice.length; i++) {
-            if (WordChoice[i] == "-") {
-                check1 = check1 + 1;
+                    }
+                }
+
+                if (dup === 0) {
+                    letterGuessed.push(userGuess);
+                    document.getElementById("LettersGuessed").innerHTML = letterGuessed;
+                }
+
 
             }
-            else
-                check2 = check2 + 1;
 
-        }
+            document.getElementById("GuessesLeft").innerHTML = guessCounter;
 
 
-        //console.log("The value of check is " + check);
-        if (check1 >= 1 && GuessCounter == 0) {
-            document.getElementById("WinCount").innerHTML = wins;
-            console.log("Your Wincount is :" + wins);
-            CurrentWord = Refresh();
+            var check1 = 0;
+            var check2 = 0;
+            for (var i = 0; i < wordChoice.length; i++) {
+                if (wordChoice[i] == "-") {
+                    check1 = check1 + 1;
 
-        } else {
+                }
+                else
+                    check2 = check2 + 1;
 
-            if (check2 >= 1 && check1 == 0) {
-                console.log("Entered the CounterCheck if"); console.log("Check1 is " + check1);
-                console.log("Entered the CounterCheck if"); console.log("Check2 is " + check2);
-                wins = wins + 1;
-                //sessionStorage.setItem("wins", parseInt(wins));
+            }
+
+
+            if (check1 >= 1 && guessCounter == 0) {
                 document.getElementById("WinCount").innerHTML = wins;
-                GuessCounter = 10;
-                CurrentWord = Refresh();
+                currentWord = Refresh();
+
+            } else {
+
+                if (check2 >= 1 && check1 == 0) {
+                    wins = wins + 1;
+                    document.getElementById("WinCount").innerHTML = wins;
+                    guessCounter = 10;
+                    currentWord = Refresh();
+
+                }
 
             }
 
+        
         }
-
         document.getElementById("Exit").onclick = function () {
-
             var exit = prompt("Are you sure you want to stop the fun?(Y/N)");
             if (exit == "Y") {
-                //alert("good bye.See you soon");
-                window.close();
-            }
-            else {
-                GuessCounter = 10;
-                CurrentWord = Refresh();
+                var ok;
+                ok = confirm("good bye.See you soon");
+                console.log("Value of OK is :" + ok);
+                if (ok) {
+                    //This is not working as the security loop is fixed by Google. But just gave it to project my idea.
+                    window.close();
+
+                }
+                else {
+                    guessCounter = 10;
+                    currentWord = Refresh();
+                }
             }
         }
-
-    }
-    function Refresh() {
-        console.log("Entered Refresh function:");
-        var veggieList = ["carrots", "beans", "peas", "potato", "spinach", "tomatoes"];
-        var CurrentWord = veggieList[Math.floor(Math.random() * veggieList.length)];
-        GuessCounter = 10;
-        console.log("The counter in Refresh functrion is " + GuessCounter);
-        LetterGuessed = [];
-        WordChoice = [];
-        for (var i = 0; i < CurrentWord.length; i++) {
-            WordChoice[i] = "-"
+        //This is the function to reset all the elements on the page except wins and image
+        function Refresh() {
+            console.log("Entered Refresh function:");
+            var veggieList = ["carrots", "beans", "peas", "potato", "spinach", "tomatoes"];
+            currentWord = veggieList[Math.floor(Math.random() * veggieList.length)];
+            guessCounter = 10;
+            letterGuessed = [];
+            wordChoice = [];
+            for (var i = 0; i < currentWord.length; i++) {
+                wordChoice[i] = "-"
+            }
+            document.getElementById("LettersGuessed").innerHTML = letterGuessed;
+            document.getElementById("GuessesLeft").innerHTML = guessCounter;
+            document.getElementById("WordChoice").innerHTML = wordChoice;
+            console.log("The current WordChoice is :" + wordChoice);
+            console.log("The current Veggie is :" + currentWord);
+            return (currentWord);
         }
-        //var GuessCounter = 10;
-        document.getElementById("LettersGuessed").innerHTML = LetterGuessed;
-        document.getElementById("GuessesLeft").innerHTML = GuessCounter;
-        document.getElementById("WordChoice").innerHTML = WordChoice;
-        console.log("The current WordChoice is :" + WordChoice);
-        console.log("The current Veggie is :" + CurrentWord);
-        return (CurrentWord);
-    }
 
 
-};
+    };
 
