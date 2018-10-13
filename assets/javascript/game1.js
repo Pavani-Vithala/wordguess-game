@@ -37,10 +37,10 @@ window.onload = function () {
         GuessCounter = GuessCounter - 1;
         document.getElementById("GuessesLeft").innerHTML = GuessCounter;
 
-        console.log("Guess Counter is  " + GuessCounter);
-        console.log("Word Choice is " + WordChoice);
-        console.log("CurrentWord is " + CurrentWord);
-        var check = 0;
+        console.log("Guess Counter is  " +GuessCounter);
+        console.log("Word Choice is " +WordChoice);
+        console.log("CurrentWord is " +CurrentWord);
+        //var check = 0;
         //var img = document.getElementById("veggiepic").innerHTML;
         var check1 = 0;
         var check2 = 0;
@@ -50,23 +50,23 @@ window.onload = function () {
 
             }
             else
-                check2 = check2+1;
+                check2 = check2 + 1;
         }
 
         //console.log("The value of check is " + check);
         if (check1 >= 1 && GuessCounter == 0) {
             document.getElementById("WinCount").innerHTML = wins;
             console.log("Your Wincount is :" + wins);
-            Refresh(CurrentWord);
-
+           // Refresh(CurrentWord);
+            exit();
         }
 
-        if (check2 >= 1 && check1 == 0) {
-            console.log("Entered the CounterCheck if");
+        if (check2 == 1 && check1 == 0) {
+            console.log("Entered the CounterCheck if");console.log("Check1 is "+check1);
+            console.log("Entered the CounterCheck if");console.log("Check2 is "+check2);
             wins = wins + 1;
             //sessionStorage.setItem("wins", parseInt(wins));
             document.getElementById("WinCount").innerHTML = wins;
-
             GuessCounter = 10;
             Refresh(CurrentWord);
 
@@ -81,7 +81,7 @@ window.onload = function () {
                 close();
             }
             else
-                Refresh();
+                Refresh(CurrentWord);
 
 
         }
