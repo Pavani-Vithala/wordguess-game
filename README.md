@@ -18,4 +18,6 @@ Choose a theme for your game! In the demo, we picked an 80s theme: 80s questions
 8. Letters Already Guessed: (Letters the user has guessed, displayed like `L Z Y H`).
 
 9. After the user wins/loses the game should automatically choose another word and make the user play it.
-The app can eb accessed from the link 
+The app can eb accessed from the link https://pavani-vithala.github.io/wordguess-game/.
+
+The app is maintained by Pavani Vithala who can be reached on pavani.vithala18@gmail.com
